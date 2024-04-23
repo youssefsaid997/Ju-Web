@@ -1,0 +1,30 @@
+<div class="inputBox form-group">
+  <span>{{ label }}</span>
+  <input [formControl]="controller" />
+
+  <ng-container
+    *ngIf="(controller.touched || controller.dirty) && controller.invalid"
+  >
+    <span
+      class="m-0"
+      *ngIf="controller.errors && controller.errors['required']"
+    >
+      value is required
+    </span>
+    <span *ngIf="controller.errors && controller.errors['required']">
+      value is required
+    </span>
+    <span *ngIf="controller.errors && controller.errors['required']">
+      value is required
+    </span>
+    <span *ngIf="controller.errors && controller.errors['required']">
+      value is required
+    </span>
+    <span *ngIf="controller.errors && controller.errors['required']">
+      value is required
+    </span>
+    <span *ngIf="controller.errors && controller.errors['required']">
+      value is required
+    </span>
+  </ng-container>
+</div>

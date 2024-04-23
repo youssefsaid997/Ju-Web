@@ -17,27 +17,46 @@ import { SubmitProblemComponent } from './Components/submit-problem/submit-probl
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component:HomeComponent },
-  { path: 'problem', canActivate:[ProtectedAuthGuard], component:ProblemComponent },
-  { path: 'contest', canActivate:[ProtectedAuthGuard], component:ContestComponent },
-  { path: 'group', canActivate:[ProtectedAuthGuard], component:GroupComponent },
-  { path: 'resetPassword', component:ResetPasswordComponent },
-  { path: 'forgetPassword', component:ForgetPasswordComponent },
-  { path: 'changePassword', canActivate:[ProtectedAuthGuard], component:ChangePasswordComponent },
-  { path: 'register', component:RegisterComponent },
-  { path: 'pagination', component:PaginationComponent },
-  { path: 'login', component:LoginComponent },
-  { path: 'problem/:source/:problemCode', component:ProblemDetailsComponent },
-  { path: 'submit', component:SubmitProblemComponent },
-  { path: 'pagination', component:PaginationComponent },
-  { path: '**', component:NotFoundComponent },
+  {
+    path: 'home',
+
+    // lazy loading for the component;
+    loadComponent: () =>
+      import('./Components/home/home.component').then((c) => c.HomeComponent),
+  },
+  {
+    path: 'problem',
+    canActivate: [ProtectedAuthGuard],
+    component: ProblemComponent,
+  },
+  {
+    path: 'contest',
+    canActivate: [ProtectedAuthGuard],
+    component: ContestComponent,
+  },
+  {
+    path: 'group',
+    canActivate: [ProtectedAuthGuard],
+    component: GroupComponent,
+  },
+  { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'forgetPassword', component: ForgetPasswordComponent },
+  {
+    path: 'changePassword',
+    canActivate: [ProtectedAuthGuard],
+    component: ChangePasswordComponent,
+  },
+  { path: 'register', component: RegisterComponent },
+  { path: 'pagination', component: PaginationComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'problem/:source/:problemCode', component: ProblemDetailsComponent },
+  { path: 'submit', component: SubmitProblemComponent },
+  { path: 'pagination', component: PaginationComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
-
-
+export class AppRoutingModule {}
